@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "miem-freshman-assistant"
+version = "0.1.0"
+description = "Telegram-помощник первокурсника ИВТ МИЭМ по программам дисциплин"
+requires-python = ">=3.11"
+dependencies = [
+  "aiogram>=3.24,<4",
+  "httpx>=0.28,<1",
+  "beautifulsoup4>=4.13,<5",
+  "python-dotenv>=1.1,<2",
+  "nltk>=3.9,<4",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10", "pytest-asyncio>=1,<2"]
+
+[project.scripts]
+miem-bot = "miem_bot.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["miem_bot*"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
